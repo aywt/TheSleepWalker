@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The Sleep Walker</title>
+  <script language="JavaScript" src="game.js"></script>
+  <script language="JavaScript" src="highscore.js"></script>
+</head>
+
+<body style="text-align: center" >
+
+<svg width="800px" height="600px"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xhtml="http://www.w3.org/1999/xhtml"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:a="http://www.adobe.com/svg10-extensions" a:timeline="independent">
+
+  <defs>
+    <clipPath id="gameareaclip">
+      <rect x="20" y="20" width="600" height="560" />
+    </clipPath>
+    <pattern id="background_pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="600" style="fill:midnightblue"/>
+      <rect width="5" height="600" style="fill:black"/>
+    </pattern>
+    <radialGradient id="player_color">
+      <stop offset="0.0" style="stop-color:yellow;stop-opacity:1"/>
+      <stop offset="0.8" style="stop-color:yellow;stop-opacity:1"/>
+      <stop offset="1.0" style="stop-color:orange;stop-opacity:1"/>
+    </radialGradient>
+    <g id="monster">
+      <path id="svg_2" fill="gray" fill-opacity="0.5" stroke="black" stroke-width="2" d="m0,30q0,-30 20,-30t20,30l0,10l-5,-7l-5,7l-5,-7l-5,7l-5,-7l-5,7l-4.88505,-7l-5.11495,7l0,-10"/>
+  <circle stroke="black" transform="rotate(0.3520142734050751 8.264369010925092,14.942528724670348) " id="svg_3" fill="red" stroke-width="2" r="2.37085" cy="14.94253" cx="8.26437"/>
+  <circle stroke="black" id="svg_4" fill="red" stroke-width="2" r="2.41379" cy="14.88506" cx="16.56322"/>
+  <ellipse ry="2.18391" rx="4.82759" id="svg_5" cy="24.80244" cx="12.70115" stroke-opacity="null" stroke-width="2" stroke="black" fill="#000000">
+    <animate attributeName="fill" attributeType="CSS"
+                          from="rgb(255,255,255)" to="rgb(0,0,0)"
+                          begin="0s" dur="2s" repeatCount="indefinite" />
+  </ellipse>
+  <ellipse id="svg_6" cy="21.23922" cx="36.37931" stroke-opacity="null" stroke-width="2" stroke="black" fill="#000000"/>
+    
+  <path id="svg_11" d="m31.40019,20.16852" opacity="0.5" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="black" fill="#000000"/>
+    </g>
+    <g id="bullet">
+      <circle cx="5" cy="5" r="5" style="fill:blue"/>
+      <circle cx="6" cy="3" r="1" style="fill:green"/>
+    </g>
+    <g id="boost">
+      <path d="M0,30 q0,-30 20,-30 t20,30 l0,10 l-5,-7 l-5,7 l-5,-7 l-5,7 l-5,-7 l-5,7 l-5,-7 l-5,7 l0,-10"
+            style="fill:gray;fill-opacity:0.5;stroke:black;stroke-width:2"/>
+      <circle cx="12" cy="20" r="5" style="fill:red;stroke:black;stroke-width:2">
+        <animateColor attributeName="fill" values="yellow;red;yellow" dur="1s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="28" cy="20" r="5" style="fill:red;stroke:black;stroke-width:2">
+        <animateColor attributeName="fill" values="yellow;red;yellow" dur="1s" repeatCount="indefinite" />
+      </circle>
+    </g>
+
+    <g id="exitPortal">
+    <rect stroke="#000" id="svg_1" height="26.1594" width="39.16557" y="0.28287" x="0.47626" stroke-width="1.5" fill="#BBBBBB"/>
+  <rect stroke="#000" id="svg_3" height="54.52172" width="39.05136" y="25.40665" x="0.47626" stroke-opacity="null" stroke-width="1.5" fill="#BBBBBB"/>
+  <line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_8" y2="21.22611" x2="34.56842" y1="16.06695" x1="34.56842" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <line transform="rotate(-1 34.51353073120102,31.709102630615124) " stroke-linecap="null" stroke-linejoin="null" id="svg_9" y2="34.72776" x2="34.45865" y1="28.69044" x1="34.56842" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/>
+  <rect stroke="#000" id="svg_11" height="3.86433" width="4.00303" y="7.36212" x="7.57974" stroke-opacity="null" stroke-width="0" fill="#ffff56"/>
+  <rect stroke="#000" id="svg_12" height="5.15091" width="5.28253" y="15.39693" x="11.59946" stroke-opacity="null" stroke-width="0" fill="#ffaaaa"/>
+  <ellipse id="svg_15" cy="8.09881" cx="9.13696" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#ffff56"/>
+  <polyline stroke-linecap="round" id="svg_17" points="9.13696002960205,7.817386150360107 9.13696002960205,7.817386150360107 " stroke-opacity="null" stroke-width="0" stroke="#000" fill="none"/>
+  <polyline stroke="#000" stroke-linecap="round" id="svg_18" points="15.797372817993164,15.603503227233887 15.797372817993164,15.603503227233887 " stroke-opacity="null" stroke-width="0" fill="none"/>
+  <rect stroke="#000" id="svg_19" height="6.48843" width="5.01876" y="7.27017" x="21.36335" stroke-opacity="null" stroke-width="0" fill="#ffd4aa"/>
+  <rect stroke="#000" id="svg_20" height="9.69649" width="6.88614" y="32.3717" x="6.60071" stroke-opacity="null" stroke-width="0" fill="#ffd4aa"/>
+  <ellipse stroke="#000" ry="0.69512" rx="0.5935" id="svg_21" cy="34.10163" cx="9.88205" stroke-opacity="null" stroke-width="0" fill="#bf0000"/>
+  <ellipse stroke="#000" ry="0.1759" rx="0.06267" id="svg_22" cy="7.95409" cx="9.39017" stroke-opacity="null" stroke-width="0" fill="#bf0000"/>
+  <text stroke="#000" transform="matrix(1.8578017970555847,0,0,2.2882023470783364,-9.737902062411512,-61.77660354856654) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="4" id="svg_4" y="54.11382" x="10" stroke-width="0" fill="#000000">FOOD</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="8" id="svg_5" y="69.42708" x="7.9065" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">HERE!</text>
+</g>
+<g id="entrancePortal">
+       <rect y="0.34014" stroke="#000" id="svg_2" height="30" width="40" x="0.44221" stroke-width="1.5" fill="#e5e5e5"/>
+  <rect id="svg_3" height="50" width="39.95389" y="30.58983" x="0.16506" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="#e5e5e5"/>
+  <rect id="svg_25" height="7.85221" width="3.69516" y="5.25489" x="6.86253" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="#ffaa56"/>
+  <rect id="svg_26" height="6.46653" width="3.69516" y="6.64057" x="12.63621" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="#3f7f00"/>
+  <rect stroke="#000" id="svg_27" height="10.16168" width="5.77368" y="2.71447" x="17.25516" stroke-opacity="null" stroke-width="1.5" fill="#7f3f00"/>
+  <rect stroke="#000" id="svg_31" height="2.30947" width="35.104" y="13.56899" x="3.16737" stroke-opacity="null" stroke-width="1.5" fill="#000000"/>
+    </g>
+
+    <g id="coffee">
+      <path stroke="#000" fill="#ba7434" stroke-width="1.5" d="m9.76683,23.22851l11.32074,0c1.6318,-0.00485 2.74504,-2.21041 2.73961,-4.47943l0,-1.52569c3.23076,-0.00408 5.57475,-3.90203 5.57354,-8.44725c0.00121,-4.62615 -2.29675,-8.42687 -4.97151,-8.42357l-17.44955,0l0,18.39689c0.00254,2.49823 1.34148,4.47457 2.78719,4.47903l-0.00001,0.00001zm14.05998,-19.41543l0,0l0.60203,0c2.21342,-0.00563 2.92342,3.35841 2.91278,4.98831c0.00217,2.63176 -1.2107,5.1558 -3.51481,4.91087l0,-9.89918zm-23.08528,20.53568c0.00205,3.40052 1.61515,4.97744 2.91352,4.98714l23.41799,0c1.54872,-0.00971 2.90614,-1.96664 2.91303,-4.98714l-29.24453,0l-0.00001,0z" id="svg_1"/>
+    </g>
+
+    <g id="portal">
+     <path stroke="#000" style="vector-effect: non-scaling-stroke;" transform="matrix(1,0,0,1,0,0) matrix(1,0,0,1,0,0) matrix(1,0,0,1,0,0) " id="svg_1" d="m39.53785,15.88531l-14.66795,0l-4.52781,-14.82657l-0.63576,2.072l-3.89739,12.75742l-14.66395,-0.00284l11.86312,9.17193l-4.53582,14.83652l11.86579,-9.17193l11.86846,9.17619l-4.53716,-14.84078l11.86846,-9.17193zm-17.62772,12.53714l-1.56937,-1.21222l-1.56937,1.21364l-5.21165,4.02746l1.9901,-6.51443l0.60104,-1.96399l-1.57204,-1.21506l-5.20898,-4.02746l8.38112,0l0.60104,-1.96257l1.98876,-6.51443l1.98876,6.51016l0.5997,1.96257l8.38913,0l-5.21699,4.0303l-1.57338,1.21364l0.5997,1.96683l1.9941,6.51443l-5.21165,-4.02888z" stroke-width="1.5" fill="#fff"/>
+    </g>
+  </defs>
+
+  <rect width="100%" height="100%" style="fill:url(#background_pattern);stroke:lime;stroke-width:4" />
+
+  <rect x="20" y="20" width="600" height="560" style="fill:black;stroke:red;stroke-width:5" />
+    <!--add your score element here-->
+    <g transform="translate(640, 120)">
+      <text x="70" y="0"red
+       style="fill:orange;font-size:20px;font-weight:bold;text-anchor:middle">
+        Happy Points:
+      </text>
+      <rect x="0" y="10" width="140" height="35" style="fill:white" />
+      <text id="score" x="70" y="36"
+       style="fill:orange;font-size:25px;text-anchor:middle">0</text>
+    </g>
+
+    <g transform="translate(640, 200)">
+      <text x="70" y="0"
+       style="fill:orange;font-size:15px;font-weight:bold;text-anchor:middle">
+        Time Remaining:
+      </text>
+      <rect x="0" y="10" width="140" height="35" style="fill:white" />
+      <text id="time" x="70" y="36"
+       style="fill:orange;font-size:25px;text-anchor:middle">80</text>
+    </g>
+
+
+<g transform="translate(640, 280)">
+      <text x="70" y="0"
+       style="fill:orange;font-size:15px;font-weight:bold;text-anchor:middle">
+        Bullets Remaining:
+      </text>
+      <rect x="0" y="10" width="140" height="35" style="fill:white" />
+      <text id="bullet remain" x="70" y="36"
+       style="fill:orange;font-size:25px;text-anchor:middle">8</text>
+    </g>
+
+  <g style="clip-path:url(#gameareaclip)">
+    <g transform="translate(20,20)">
+      <g id="gamearea" transform="translate(0,0)" width="600" height="560">
+        <rect x="0" y="0" width="600" height="560" style="fill:darkslategrey" />
+
+        <g id="platforms">
+
+           <rect type="disappearing" style="opacity:1;fill:white" width="100" height="20" x="500" y="300" />
+            <rect type="disappearing" style="opacity:1;fill:white" width="200" height="20" x="160" y="420"/>
+            <rect type="disappearing" style="opacity:1;fill:white" width="80" height="20" x="20" y="220"/>
+            
+            <rect id="vert" style="fill:orange" width="120" height="20" x="350" y="220"/>
+
+            <!-- 60 -->
+            <rect style="fill:orange" width="60" height="20" x="0" y="60"/>
+
+            <!-- 80 -->
+            <rect style="fill:orange" width="20" height="20" x="40" y="80"/>
+
+            <!-- 100 -->
+            <rect style="fill:orange" width="100" height="20" x="480" y="100"/>
+            <rect style="fill:orange" width="300" height="20" x="40" y="100"/>
+
+            <!-- 120 -->
+            <rect style="fill:orange" width="20" height="20" x="60" y="120"/>
+            <rect style="fill:orange" width="40" height="20" x="220" y="120"/>
+
+            <!-- 140 -->
+            <rect style="fill:orange" width="40" height="20" x="220" y="140"/>
+
+            <!-- 160 -->
+            <rect style="fill:orange" width="120" height="20" x="180" y="160"/>
+
+            <!-- 180 -->
+            <rect style="fill:orange" width="20" height="20" x="0" y="180"/>
+            <rect style="fill:orange" width="20" height="20" x="100" y="180"/>
+
+            <!-- 200 -->
+            <rect style="fill:orange" width="20" height="20" x="0" y="200"/>
+            <rect style="fill:orange" width="40" height="20" x="80" y="200"/>
+
+            <!-- 220 -->
+            <rect style="fill:orange" width="20" height="20" x="0" y="220"/>
+            <rect style="fill:orange" width="60" height="20" x="100" y="220"/>
+
+           
+            <!-- 240 -->
+            <rect style="fill:orange" width="20" height="20" x="240" y="240"/>
+          
+
+            <!-- 260 -->
+            <rect style="fill:orange" width="60" height="20" x="220" y="260"/>
+
+            <!-- 280 -->
+            <rect style="fill:orange" width="100" height="20" x="200" y="280"/>
+
+            <!-- 300 -->
+            <rect style="fill:orange" width="100" height="20" x="120" y="300"/>
+            <rect style="fill:orange" width="40" height="20" x="280" y="300"/>
+
+            <!-- 320 -->
+            <rect style="fill:orange" width="40" height="20" x="0" y="320"/>
+            <rect style="fill:orange" width="40" height="20" x="280" y="320"/>
+            <rect style="fill:orange" width="20" height="20" x="380" y="320"/>
+
+            <!-- 340 -->
+            <rect style="fill:orange" width="60" height="20" x="0" y="340"/>
+            <rect style="fill:orange" width="60" height="20" x="380" y="340"/>
+
+            <!-- 360 -->
+            <rect style="fill:orange" width="120" height="20" x="0" y="360"/>
+            <rect style="fill:orange" width="120" height="20" x="380" y="360"/>
+
+            <!-- 380 -->
+            <rect style="fill:orange" width="100" height="20" x="0" y="380"/>
+            <rect style="fill:orange" width="20" height="20" x="220" y="380"/>
+            <rect style="fill:orange" width="20" height="20" x="580" y="380"/>
+
+            <!-- 400 -->
+            <rect style="fill:orange" width="40" height="20" x="560" y="400"/>
+
+            <!-- 420 -->
+            <rect style="fill:orange" width="60" height="20" x="540" y="420"/>
+
+            <!-- 440 -->
+            <rect style="fill:orange" width="40" height="20" x="140" y="440"/>
+            <rect style="fill:orange" width="20" height="20" x="440" y="440"/>
+            <rect style="fill:orange" width="60" height="20" x="520" y="440"/>
+
+            <!-- 460 -->
+            <rect style="fill:orange" width="60" height="20" x="120" y="460"/>
+            <rect style="fill:orange" width="60" height="20" x="400" y="460"/>
+
+            <!-- 480 -->
+            <rect style="fill:orange" width="40" height="20" x="0" y="480"/>
+            <rect style="fill:orange" width="60" height="20" x="380" y="480"/>
+
+            <!-- 500 -->
+            <rect style="fill:orange" width="60" height="20" x="0" y="500"/>
+            <rect style="fill:orange" width="20" height="20" x="260" y="500"/>
+
+            <!-- 520 -->
+            <rect style="fill:orange" width="80" height="20" x="0" y="520"/>
+            <rect style="fill:orange" width="20" height="20" x="140" y="520"/>
+            <rect style="fill:orange" width="80" height="20" x="240" y="520"/>
+            <rect style="fill:orange" width="20" height="20" x="500" y="520"/>
+
+            <!-- the floor -->
+            <rect style="fill:orange" width="600" height="20" x="0" y="540"/>
+
+           
+        </g>
+
+        <g id="exit"/>
+        <g id="entrance"/>
+        <g id="monsters"/>
+        <g id="bullets"/>
+        <g id="monsterBullets"/>
+        <g id="goodThing"/>
+        <g id="portals"/>
+          
+
+        <g id="name">
+          <text id="playerName" opacity="1" xml:space="preserve" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="7" id="svg_2" y="-1.28118" x="4.75521" stroke-width="0" stroke="#000" fill="#6f90ff">Anonymous</text>
+        </g>
+      
+        <g id="player">
+
+       <ellipse fill="#FFF093" stroke="#000" stroke-width="1.5" stroke-opacity="null" cx="19.81482" cy="18.55556" id="svg_5" rx="19" ry="17"/>
+  <ellipse fill="#000000" stroke-width="1.5" stroke-opacity="null" cx="30.2024" cy="15.46108" id="svg_6" rx="2.98449" ry="0.34884" stroke="#000"/>
+  <rect fill="#FFF093" stroke="#000" stroke-width="1.5" stroke-opacity="null" fill-opacity="null" x="33.03186" y="25.03472" width="4.031" height="0.07752" id="svg_10"/>
+  <line fill="none" stroke-width="1.5" stroke-opacity="null" fill-opacity="null" x1="11.01637" y1="33.87192" x2="11.01637" y2="37.59285" id="svg_11" stroke-linejoin="null" stroke-linecap="null" stroke="#000"/>
+  <line fill="none" stroke-width="1.5" stroke-opacity="null" fill-opacity="null" x1="26.83031" y1="34.49207" x2="26.98535" y2="38.13548" id="svg_13" stroke-linejoin="null" stroke-linecap="null" stroke="#000"/>
+  <ellipse fill="#845335" stroke-width="1.5" stroke-opacity="null" cx="13.96211" cy="38.67812" id="svg_14" rx="3.87597" ry="1.24031" stroke="#000"/>
+  <ellipse fill="#845335" stroke-width="1.5" cx="30.08612" cy="38.63936" id="svg_16" rx="3.33333" ry="1.12403" stroke="#000"/>
+  
+        </g>
+      </g>
+    
+        <!--add your highscore table here-->
+        <g id="highscoretable" transform="translate(40,40)">
+          <rect width="520" height="480"
+           style="fill:white;stroke:red;stroke-width:2"/>
+          <text x="260" y="40"
+           style="fill:red;font-size:30px;font-weight:bold;text-anchor:middle">
+            High Score Table
+          </text>
+          <text id="highscoretext" y="45"
+           style="font-size: 20px;font-weight:bold"/>
+        </g>
+    </g>
+  </g>
+  <g id="startAgain">
+    <rect  x="640" y="450" width="140" height="40"  style="fill:lightsteelblue;fill-opacity:1;stroke-linejoin: round;stroke:blue;stroke-width:5" />
+    <text x="660" y="477" font-family="Verdana" font-size="16" fill="black">Start Again?</text>
+    <rect class="btn" x="640" y="450" width="140" height="40" style="fill:white;fill-opacity:0;stroke-linejoin:round;stroke:pink;stroke-width:5" onclick="load()" />
+  </g>
+  <g id="startUp">
+     <rect width="100%" height="100%" style="fill:linen;stroke-linejoin: round;stroke:blue;stroke-width:5" />
+    <text x="50%" y="10%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="50" fill="black">The Sleep Walker</text>
+    <text x="50%" y="95%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="10" fill="black">
+      Yin Wai Annaliese Tan 20684216
+    </text>
+    <text x="50%" y="18%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="20" fill="black">
+      Zzzz.....
+    </text>
+    <text x="50%" y="26%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="12.5" fill="black">
+    Mr. Hangry is trying to get a midnight snack from his fridge but wait...ARE THOSE GHOSTS? Or is it just a dream...?
+    </text>
+
+<text x="50%" y="31%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="12.5" fill="black">
+    
+Anyways, Mr. Hangry is too hungry to care so help guide him through his maze of a house to get 
+</text>
+
+<text x="50%" y="35%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="12.5" fill="black">
+    
+to his fridge but avoid the ghosts! And because this is most definitely a dream, you can help Mr. Hangry 
+</text>
+<text x="50%" y="39%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="12.5" fill="black">
+bust some ghosts and shoot bullets at them. But there will only be 8 bullets available so use them wisely!
+</text>
+<text x="50%" y="46%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="12.5" fill="black">
+Also, keep Mr. Hangry energized with some coffee along the way! You must get them all before you find the fridge 
+</text>
+<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="12.5" fill="black">
+Mr. Hangry gets so you score more Happy Points! 
+</text>
+
+<text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="12.5" fill="black">
+More things to note, white platforms represent disappearing floors so don't spend too much time on them or you will fall. 
+</text>
+<text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="12.5" fill="black">
+Also, you might be seeing stars and wandering into them will bring you into another part of the house! 
+</text>
+
+
+<text x="50%" y="67%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="16" fill="black">
+To move Mr. Hangry, press:
+</text>
+<text x="50%" y="72%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="18" fill="black">
+A - Move Left |
+D - Move Right |
+W - Jump |
+H - Shoot Bullets | 
+
+</text>
+<text x="50%" y="77%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="18" fill="black">
+  C - Cheat Mode |
+V - Exit Cheat Mode
+</text>
+
+    <rect  x="320" y="500" width="160" height="40"  style="fill:lightsteelblue;fill-opacity:0.4;stroke-linejoin: round;stroke:blue;stroke-width:5" />
+    <text x="340" y="527" font-family="Verdana" font-size="20" fill="black">Start Game</text>
+    <rect class="btn2" x="320" y="500" width="160" height="40" style="fill:white;fill-opacity:0;stroke-linejoin:round;stroke:pink;stroke-width:5" onclick="restart()" />
+  </g>
+
+</svg>
+
+
+</body>
+
+</html>
